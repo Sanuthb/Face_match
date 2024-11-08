@@ -1,4 +1,4 @@
-#FaceMatch: Face Similarity Detection in Python
+# FaceMatch: Face Similarity Detection in Python
 
 FaceMatch is a Python-based face similarity detection system that uses OpenCV's pre-trained models to find and compare faces across images. It’s designed to streamline facial recognition tasks by allowing quick identification of similar faces in image collections.
 
@@ -20,6 +20,18 @@ Scikit-Learn
 
 To use FaceMatch, you need the following model files, which should be saved in the project directory:
 
-<b>deploy.prototxt</b>: Contains the model architecture.
-res10_300x300_ssd_iter_140000.caffemodel: Contains the model weights.
+<b>deploy.prototxt</b>: Contains the model architecture.<br/>
+<b>res10_300x300_ssd_iter_140000.caffemodel</b>: Contains the model weights.
 
+# How It Works
+
+<b>Face Detection</b>: The model first detects faces in each image by generating bounding boxes around them.
+<b>Embedding Generation</b>: Each detected face is cropped and resized to a standard 96x96 format, then transformed into an embedding, a numerical representation of the face.
+<b>Similarity Calculation</b>: Using cosine similarity, the embeddings are compared to determine how similar each face is to the reference face.
+
+# Adjusting the Similarity Threshold
+
+The similarity threshold <b>(default: 0.6)</b> is adjustable, depending on the level of accuracy and similarity required:
+
+<b>Higher Threshold</b>: Increases matching strictness but may reduce the number of matched faces.
+<b>Lower Threshold</b>: Relaxes the matching criteria, which can result in more potential matches but possibly more false positives.
